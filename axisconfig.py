@@ -3,7 +3,7 @@ from requests.auth import HTTPDigestAuth
 
 class AxisCam:
     
-    def _init_(self, ip, password, username, method, cgi, data, port):
+    def __init__(self, ip, password, username, method, cgi, data, port):
         self.ip = ip
         self.username = username
         self.password = password
@@ -14,14 +14,14 @@ class AxisCam:
    
     def axis_cam (self):
         
-        if method == 'get':
-            print (f'http://{ip}:{port}/axis-cgi/{cgi}')
-            r =  requests.get (f'http://{ip}:{port}/axis-cgi/{cgi}', auth=HTTPDigestAuth(f'{username}',f'{password}'), timeout=1)
+        if self.method == 'get':
+            print (f'http://{self.ip}:{self.port}/axis-cgi/{self.cgi}')
+            r =  requests.get (f'http://{self.ip}:{self.port}/axis-cgi/{self.cgi}', auth=HTTPDigestAuth(f'{self.username}',f'{self.password}'), timeout=1)
             print(r.text)
             return r
-        if method == 'post':
-            print (f'http://{ip}:{port}/axis-cgi/{cgi}')
-            r = requests.post (f'http://{ip}:{port}/axis-cgi/{cgi}', auth=HTTPDigestAuth(f'{username}',f'{password}'), json=data, timeout=1)
+        if self.method == 'post':
+            print (f'http://{self.ip}:{self.port}/axis-cgi/{self.cgi}')
+            r = requests.post (f'http://{self.ip}:{self.port}/axis-cgi/{self.cgi}', auth=HTTPDigestAuth(f'{self.username}',f'{self.password}'), json=self.data, timeout=1)
             print(r.text)
             return r
 
