@@ -24,18 +24,3 @@ class AxisCam:
             r = requests.post (f'http://{self.ip}:{self.port}/axis-cgi/{self.cgi}', auth=HTTPDigestAuth(f'{self.username}',f'{self.password}'), json=self.data, timeout=1)
             print(r.text)
             return r
-
-ip = "192.168.0.90"
-username = "root"
-password = "pass"
-port = "80"
-cgi = "basicdeviceinfo.cgi"
-method = "post"
-data ={
-    "apiVersion": "1.0",
-    "context": "Client defined request ID",
-    "method": "getAllProperties"
-}
-
-a = AxisCam(ip,password, username, method, cgi, data, port)
-print(a.axis_cam())
