@@ -9,7 +9,7 @@ class Request:
         self.__password:str = password
 
     def __repr__(self):
-        return f"<AxisCgi: {self.base_url}>"
+        return f"<Request: {self.base_url}>"
 
     def api_discovery(self, params=None, json=None) -> requests.Response:
         return requests.post(self.base_url + 'axis-cgi/apidiscovery.cgi', params=params, json=json, auth=HTTPDigestAuth(self.__username, self.__password))
